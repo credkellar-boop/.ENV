@@ -1,0 +1,21 @@
+name: Run ENV Scanner
+
+# Tell GitHub to run this script every time code is pushed
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run the scanner
+        run: python scanner.py
+        
